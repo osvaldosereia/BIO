@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osvaldo Sereia Jr. - Link da Bio</title>
+    <!-- Inclui o Tailwind CSS via CDN para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configura o Tailwind para usar classes personalizadas e a fonte Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'custom-purple': '#8B5CF6', // Um roxo bonito
+                        'custom-dark': '#1F2937',   // Um cinza escuro para o fundo
+                        'custom-light-blue': '#BFDBFE', // Um azul claro para destaque
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Link para a fonte Inter do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            /* Define a fonte Inter para todo o corpo e um fundo cinza escuro */
+            font-family: 'Inter', sans-serif;
+            background-color: #1F2937; /* custom-dark */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Garante que ocupa a altura total da viewport */
+            padding: 1rem; /* Padding geral para telas menores */
+        }
+    </style>
+</head>
+<body class="bg-custom-dark text-white">
+
+    <!-- Container principal centralizado e responsivo -->
+    <div class="w-full max-w-md bg-gray-800 rounded-xl shadow-2xl p-6 sm:p-8 flex flex-col items-center space-y-6">
+
+        <!-- Imagem de perfil -->
+        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-custom-purple shadow-lg">
+            <!--
+                PASSO IMPORTANTE:
+                Substitua "SUA_IMAGEM_LINK_DIRETO_AQUI" pela URL RAW da sua imagem no GitHub.
+                1. Faça o upload da sua foto (por exemplo, "foto_perfil.jpg") para o seu repositório GitHub.
+                2. No GitHub, clique no arquivo da imagem.
+                3. Clique no botão "Raw". Isso abrirá a imagem em uma nova aba com a URL direta (ex: https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/foto_perfil.jpg).
+                4. Copie essa URL e cole aqui.
+            -->
+            <img src="SUA_IMAGEM_LINK_DIRETO_AQUI" alt="Foto de Perfil" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Nome de usuário do Instagram -->
+        <h1 class="text-3xl sm:text-4xl font-bold text-white text-center">
+            @osvaldosereiajr
+        </h1>
+
+        <!-- Seção de botões de link -->
+        <div class="w-full space-y-4">
+            <!-- Botão para Apostilas -->
+            <a href="https://exemplo.com/apostilas" target="_blank" rel="noopener noreferrer"
+               class="block w-full py-3 px-4 bg-custom-purple hover:bg-purple-700 text-white text-lg font-semibold rounded-lg shadow-md transition transform hover:scale-105 text-center">
+                📚 Apostilas
+            </a>
+
+            <!-- Botão para Dicas de Vídeos -->
+            <a href="https://exemplo.com/dicas-videos" target="_blank" rel="noopener noreferrer"
+               class="block w-full py-3 px-4 bg-custom-purple hover:bg-purple-700 text-white text-lg font-semibold rounded-lg shadow-md transition transform hover:scale-105 text-center">
+                🎬 Dicas de Vídeos
+            </a>
+
+            <!-- Botão para Dicas de Cursos -->
+            <a href="https://exemplo.com/dicas-cursos" target="_blank" rel="noopener noreferrer"
+               class="block w-full py-3 px-4 bg-custom-purple hover:bg-purple-700 text-white text-lg font-semibold rounded-lg shadow-md transition transform hover:scale-105 text-center">
+                🎓 Dicas de Cursos
+            </a>
+        </div>
+
+        <!-- Rodapé opcional ou créditos -->
+        <p class="text-gray-400 text-sm mt-6">
+            Feito com ❤️ por Osvaldo Sereia Jr.
+        </p>
+    </div>
+
+</body>
+</html>
