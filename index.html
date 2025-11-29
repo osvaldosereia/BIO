@@ -1,92 +1,208 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osvaldo Sereia Jr. - Link da Bio</title>
-    <!-- Inclui o Tailwind CSS via CDN para estilização rápida e responsiva -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configura o Tailwind para usar classes personalizadas e a fonte Inter -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'custom-purple': '#8B5CF6', // Um roxo bonito
-                        'custom-dark': '#1F2937',   // Um cinza escuro para o fundo
-                        'custom-light-blue': '#BFDBFE', // Um azul claro para destaque
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Link para a fonte Inter do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Painel de Famosos</title>
+    
+    <!-- SECÇÃO DE ESTILOS (CSS) -->
     <style>
+        /* Reset Básico */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            /* Define a fonte Inter para todo o corpo e um fundo cinza escuro */
-            font-family: 'Inter', sans-serif;
-            background-color: #1F2937; /* custom-dark */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            color: #262626;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            color: #8e8e8e;
+            font-size: 0.9rem;
+        }
+
+        /* Container Principal (Grid) */
+        #grade-perfis {
+            display: grid;
+            /* Cria colunas responsivas: mínimo 320px, máximo o que der */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 80vh;
+        }
+
+        /* O Card do Widget */
+        .widget-insta {
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Garante que ocupa a altura total da viewport */
-            padding: 1rem; /* Padding geral para telas menores */
+            align-items: flex-start;
+            min-height: 400px; /* Altura mínima para não colapsar enquanto carrega */
+        }
+
+        .widget-insta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Ajuste para o Iframe do Instagram */
+        .embed-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        /* Mensagem de carregamento */
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #8e8e8e;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #8e8e8e;
+            font-size: 0.8rem;
+            border-top: 1px solid #dbdbdb;
+            margin-top: auto;
         }
     </style>
 </head>
-<body class="bg-custom-dark text-white">
+<body>
 
-    <!-- Container principal centralizado e responsivo -->
-    <div class="w-full max-w-md bg-gray-800 rounded-xl shadow-2xl p-6 sm:p-8 flex flex-col items-center space-y-6">
-
-        <!-- Imagem de perfil -->
-        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-custom-purple shadow-lg">
-            <!--
-                PASSO IMPORTANTE:
-                Substitua "SUA_IMAGEM_LINK_DIRETO_AQUI" pela URL RAW da sua imagem no GitHub.
-                1. Faça o upload da sua foto (por exemplo, "foto_perfil.jpg") para o seu repositório GitHub.
-                2. No GitHub, clique no arquivo da imagem.
-                3. Clique no botão "Raw". Isso abrirá a imagem em uma nova aba com a URL direta (ex: https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/foto_perfil.jpg).
-                4. Copie essa URL e cole aqui.
-            -->
-            <img src="https://raw.githubusercontent.com/osvaldosereia/BIO/refs/heads/main/1001924481.webp" alt="Foto de Perfil" class="w-full h-full object-cover">
+    <header>
+        <div class="header-content">
+            <h1>📸 Painel de Famosos</h1>
+            <p>As últimas atualizações dos maiores ícones, num só lugar.</p>
         </div>
+    </header>
 
-        <!-- Nome de usuário do Instagram -->
-        <h1 class="text-3xl sm:text-4xl font-bold text-white text-center">
-            @osvaldosereiajr
-        </h1>
+    <main id="grade-perfis">
+        <div class="loading">A carregar o feed...</div>
+    </main>
 
-        <!-- Seção de botões de link -->
-        <div class="w-full space-y-4">
-            <!-- Botão para Apostilas -->
-            <a href="https://exemplo.com/apostilas" target="_blank" rel="noopener noreferrer"
-               class="block w-full py-3 px-4 bg-custom-purple hover:bg-purple-700 text-white text-lg font-semibold rounded-lg shadow-md transition transform hover:scale-105 text-center">
-                📚 Apostilas
-            </a>
+    <footer>
+        <p>Criado com GitHub Pages & Instagram Embeds</p>
+    </footer>
 
-            <!-- Botão para Dicas de Vídeos -->
-            <a href="https://exemplo.com/dicas-videos" target="_blank" rel="noopener noreferrer"
-               class="block w-full py-3 px-4 bg-custom-purple hover:bg-purple-700 text-white text-lg font-semibold rounded-lg shadow-md transition transform hover:scale-105 text-center">
-                🎬 Dicas de Vídeos
-            </a>
+    <!-- SECÇÃO DE LÓGICA (JAVASCRIPT) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const grade = document.getElementById('grade-perfis');
 
-            <!-- Botão para Dicas de Cursos -->
-            <a href="https://exemplo.com/dicas-cursos" target="_blank" rel="noopener noreferrer"
-               class="block w-full py-3 px-4 bg-custom-purple hover:bg-purple-700 text-white text-lg font-semibold rounded-lg shadow-md transition transform hover:scale-105 text-center">
-                🎓 Dicas de Cursos
-            </a>
-        </div>
+            // DADOS DOS FAMOSOS
+            // Podes adicionar ou remover pessoas aqui
+            const perfis = [
+                {
+                    "nome": "Cristiano Ronaldo",
+                    "postLink": "https://www.instagram.com/p/DC1k7YqxAxy/" 
+                },
+                {
+                    "nome": "Anitta",
+                    "postLink": "https://www.instagram.com/p/DCzsOxtS-u_/" 
+                },
+                {
+                    "nome": "Neymar Jr",
+                    "postLink": "https://www.instagram.com/p/DCm0-OQPwNB/" 
+                },
+                {
+                    "nome": "Beyoncé",
+                    "postLink": "https://www.instagram.com/p/DCe_Yy_P3oR/" 
+                },
+                 {
+                    "nome": "Lionel Messi",
+                    "postLink": "https://www.instagram.com/p/DCW1nO_vXl_/" 
+                }
+            ];
 
-        <!-- Rodapé opcional ou créditos -->
-        <p class="text-gray-400 text-sm mt-6">
-            Feito com ❤️ por Osvaldo Sereia Jr.
-        </p>
-    </div>
+            function carregarPaineis() {
+                // Limpa a mensagem de carregamento
+                grade.innerHTML = '';
 
+                perfis.forEach(perfil => {
+                    const widget = document.createElement('div');
+                    widget.className = 'widget-insta';
+
+                    // Monta o HTML necessário para o Embed do Instagram
+                    widget.innerHTML = `
+                        <div class="embed-container">
+                            <blockquote class="instagram-media" 
+                                data-instgrm-captioned 
+                                data-instgrm-permalink="${perfil.postLink}" 
+                                data-instgrm-version="14" 
+                                style="background:#FFF; border:0; margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%;">
+                                
+                                <div style="padding:16px;"> 
+                                    <a href="${perfil.postLink}" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> 
+                                        Ver post de ${perfil.nome} no Instagram
+                                    </a>
+                                </div>
+                            </blockquote>
+                        </div>
+                    `;
+                    grade.appendChild(widget);
+                });
+
+                // Após criar os elementos HTML, injetamos o cérebro do Instagram
+                ativarScriptInstagram();
+            }
+
+            function ativarScriptInstagram() {
+                // Verifica se o script já foi carregado antes
+                if (window.instgrm) {
+                    window.instgrm.Embeds.process();
+                } else {
+                    // Cria a tag <script> dinamicamente
+                    const script = document.createElement('script');
+                    script.async = true;
+                    script.src = "//www.instagram.com/embed.js";
+                    
+                    script.onerror = () => {
+                        console.log("O script do Instagram foi bloqueado pelo navegador (comum em previews).");
+                    };
+
+                    document.body.appendChild(script);
+                }
+            }
+
+            // Inicia a aplicação
+            carregarPaineis();
+        });
+    </script>
 </body>
 </html>
